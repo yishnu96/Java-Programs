@@ -1,0 +1,81 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.PriorityQueue;
+
+public class Solution {
+
+	public static ArrayList<Integer> kLargest(int[] input, int k) {
+	
+		PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
+		ArrayList<Integer> ans = new ArrayList<Integer>();
+		
+		for (int i = 0; i < k; i++) {
+			pq.add(input[i]);
+		}
+		
+		for (int i = k; i < input.length; i++) {
+			if(pq.peek() < input[i])
+			{
+				pq.poll();
+				pq.add(input[i]);
+			}
+		}
+		
+		while(!pq.isEmpty()) {
+			ans.add(pq.poll());
+		}
+		
+		return ans;
+	}
+
+	public static ArrayList<Integer> kSmallest(int[] input, int k) {
+		PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
+		ArrayList<Integer> ans = new ArrayList<Integer>();
+		
+		for (int i = 0; i < input.length; i++) {
+			pq.add(input[i]);
+		}
+		
+		for(int i=0;i<k;i++)
+		{
+			ans.add(pq.poll());
+		}
+		
+		return ans;
+	}
+
+	public static boolean checkMaxHeap(int[] arr) {
+		
+		int n = arr.length;
+        for (int i = 0; i <= (n - 2) / 2; i++) { 
+            if (arr[2 * i + 1] > arr[i]) { 
+                return false; 
+            } 
+  
+            if (2 * i + 2 < n && arr[2 * i + 2] > arr[i]) { 
+                return false; 
+            } 
+        } 
+        return true;
+	}
+
+	public static int kthLargest(int[] input, int k) {
+		
+//		PriorityQueue<Integer> pq = new PriorityQueue<>();
+//		pq.add(input[0]);
+//		for (int i = 0; i < k; i++)
+//		{
+//			if (input[i] > pq.peek())
+//			{
+//				pq.poll();
+//				pq.add(input[i]);
+//			}
+//		}
+//
+//		return pq.peek();
+		
+		Arrays.sort(input);
+		return input[k+1];
+	}
+
+}

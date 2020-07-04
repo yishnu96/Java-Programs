@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Prims_algo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner s = new Scanner(System.in);
+		int n = s.nextInt();
+		int e = s.nextInt();
+		int[][] adjmatrix = new int[n][n];
+		
+		for (int i = 0; i < e; i++) {
+			int v1 = s.nextInt();
+			int v2 = s.nextInt();
+			int weight = s.nextInt();
+			
+			adjmatrix[v1][v2] = weight;
+			adjmatrix[v2][v1] = weight;
+		}
+		
+		prims(adjmatrix);
+	}
+
+	private static void prims(int[][] adjmatrix) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+}
